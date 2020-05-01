@@ -41,19 +41,19 @@ module.exports = {
 				test: /\.scss$/,
 				use: ['style-loader', 'css-loader', 'sass-loader']
 			}, { //配置图片、字体文件规则
-				test: /\.jpg|png|bmp|gif|ttf|eot|svg|woff|woff2$/,
-				use: 'url-loader?limit=43713&name=[hash:6]-[name].[ext]'
+				test: /\.(jpg|png|bmp|gif|ttf|eot|svg|woff|woff2)$/,
+				use: 'url-loader?limit=0&name=[hash:6]-[name].[ext]'
 				// 需要 url-loader和file-loader（file-loader是url-loader的内置依赖项）
 				// ? 问号之后是传递的参数
 				// limit表示图片大于limit的不会被转成base64（单位为：字节 byte）
 				// name表示指定文件名称  hash:6表示取hash前6位    name表示原来名称   ext表示原来扩展名
-			},{
-				test:/\.js$/,
-				use:'babel-loader',
-				exclude:/node_modules/
+			}, {
+				test: /\.js$/,
+				use: 'babel-loader',
+				exclude: /node_modules/
 				// exclude表示排除项，表示不需要处理node_modules中的js文件
-			},{
-				test:/\.vue/,
+			}, {
+				test: /\.vue$/,
 				use:'vue-loader'
 			}
 		]

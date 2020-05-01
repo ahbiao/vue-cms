@@ -104,7 +104,7 @@ module.exports = {
 				exclude: /node_modules/
 				// exclude表示排除项，表示不需要处理node_modules中的js文件
 			},{
-				test:/\.vue/,
+				test:/\.vue$/,
 				use:'vue-loader'
 			}
 		]
