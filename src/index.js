@@ -2,39 +2,15 @@
 
 // 导入vue模块
 import Vue from 'vue'
-
+// 导入全局配置模块
+import './globalConfig.js'
 // 导入根组件
 import App from './components/App.vue'
-
-// 导入vant,并安装
-import { NavBar,Tabbar, TabbarItem,Swipe, SwipeItem ,Lazyload,Grid, GridItem,Image as VanImage} from 'vant'
-Vue.use(NavBar)
-Vue.use(Tabbar)
-Vue.use(TabbarItem)
-Vue.use(Swipe)
-Vue.use(SwipeItem)
-Vue.use(Lazyload, {
-    lazyComponent: true,
-})
-Vue.use(Grid);
-Vue.use(GridItem);
-Vue.use(VanImage);
-// 配置路由
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+// 导入路由
 import router from './router.js'
-
-// 导入axios
-import axios from 'axios'
-
-Vue.prototype.$http=axios.create({
-    baseURL:'http://www.liulongbin.top:3005/'//配置全局axios请求根路径
-})
-
-import './css/style.css'
 // 创建vm实例
-const vm=new Vue({
-    el:'#app',
-    render:c=>c(App),
-    router
+const vm = new Vue({
+	el: '#app',
+	render: c => c(App),
+	router
 })

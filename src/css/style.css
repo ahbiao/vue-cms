@@ -1,10 +1,14 @@
-.van-tabbar{
-    background-color: #FAFAFA;
+.van-tabbar {
+	background-color: #FAFAFA;
 }
-.van-nav-bar{
-    background-color: #26A2FF;
-    color: #fff;
+
+.van-nav-bar {
+	background-color: #26A2FF;
+	color: #fff;
 }
-.van-nav-bar__left .van-icon,.van-nav-bar__text,.van-nav-bar__title{
-    color: #fff;
+
+.van-nav-bar__left .van-icon,
+.van-nav-bar__text,
+.van-nav-bar__title {
+	color: #fff;
 }

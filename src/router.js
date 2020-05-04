@@ -5,11 +5,12 @@ import ShopcarContainer from './components/tabbars/ShopcarContainer.vue'
 import SearchContainer from './components/tabbars/SearchContainer.vue'
 
 // 
-
 import NewsList from './components/news/NewsList.vue'
+import NewsInfo from './components/news/NewsInfo.vue'
 // 配置路由
+import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+Vue.use(VueRouter)
 const router = new VueRouter({
     routes: [{
             path: '/',
@@ -33,6 +34,10 @@ const router = new VueRouter({
         },{
             path: '/home/newslist',
             component: NewsList
+        },{
+            path:'/home/newslist/:id',
+            component:NewsInfo,
+            props:true//启用props来接收路由传来的参数
         }
     ]
 })
