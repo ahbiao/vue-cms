@@ -19,7 +19,7 @@
 
     <van-panel title="评论内容">
       <van-cell-group>
-        <van-list v-model="loading" :finished="finished" finished-text="仅支持查看前50楼~" @load="onLoad">
+        <van-list v-model="loading" :finished="finished" finished-text="没有更多了 " @load="onLoad">
           <van-cell
             v-for="(item, index) in cmtlist"
             :key="index"
@@ -57,19 +57,13 @@ export default {
   props: ["newsid"],
   methods: {
     onLoad() {
-      setTimeout(() => {
-        if (this.refreshing) {
-          this.cmtlist = [];
-          this.refreshing = false;
-        }
+      if (this.refreshing) {
+        this.cmtlist = [];
+        this.refreshing = false;
+      }
 
-        this.loadMore();
-        this.loading = false;
-
-        if (this.cmtlist.length >= 40) {
-          this.finished = true;
-        }
-      }, 500);
+      this.loadMore();
+      this.loading = false;
     },
     onRefresh() {
       // 清空列表数据
@@ -87,6 +81,10 @@ export default {
       );
       if (data.status === 0)
         return (this.cmtlist = this.cmtlist.concat(data.message)); //拼接数组
+      // 数据全部加载完成
+      if (data.message.length <= 0) {
+        this.finished = true;
+      }
     },
     loadMore() {
       //获取更多评论
@@ -102,16 +100,16 @@ export default {
           content: this.message.trim()
         }
       );
-      if(data.status===0){
+      if (data.status === 0) {
         //   console.log(data);
         //   this.cmtlist=[]
         //   this.getCommentByPage()
         this.cmtlist.unshift({
-            add_time:new Date(),
-            user_name:'匿名用户',
-            content:this.message.trim()
-        })
-        this.message=''
+          add_time: new Date(),
+          user_name: "匿名用户",
+          content: this.message.trim()
+        });
+        this.message = "";
       }
     }
   }

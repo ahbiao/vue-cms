@@ -10,6 +10,7 @@ module.exports = {
 	//webpack中默认入口文件 ./src/index.js
 	//         默认输出文件 ./dist/main.js
 	entry: path.join(__dirname, './src/index.js'), //打包入口文件地址
+	devtool: 'inline-source-map',
 	output: {
 		path: path.join(__dirname, './dist'), //输出文件路径
 		filename: 'bundle.js' //输出文件名称

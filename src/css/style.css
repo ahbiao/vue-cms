@@ -12,3 +12,7 @@
 .van-nav-bar__title {
 	color: #fff;
 }
+
+.van-tabs__line {
+	z-index: 0;
+}

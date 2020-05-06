@@ -18,7 +18,11 @@ import {
 	Button,
 	Panel,
 	CellGroup,
-	Toast
+	Toast,
+	Tab,
+	Tabs,
+	Loading,
+	ImagePreview
 } from 'vant'
 Vue.use(NavBar)
 Vue.use(Tabbar)
@@ -27,6 +31,7 @@ Vue.use(Swipe)
 Vue.use(SwipeItem)
 Vue.use(Lazyload, {
 	lazyComponent: true,
+	loading
 })
 Vue.use(Grid);
 Vue.use(GridItem);
@@ -40,6 +45,12 @@ Vue.use(Field);
 Vue.use(Button);
 Vue.use(Panel);
 Vue.use(Toast);
+Vue.use(Tab);
+Vue.use(Tabs);
+Vue.use(Loading);
+Vue.use(ImagePreview);
+
+import loading from './images/loading.gif'
 
 
 // 导入axios

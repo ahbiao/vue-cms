@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open chrome --hot --port 3003 --host 127.0.0.1 --watchContentBase --inline",
+    "dev": "webpack-dev-server --open chrome --hot --port 3003 --host 192.168.0.4 --watchContentBase --inline",
     "pub": "webpack --config webpack.publish.config.js"
   },
   "keywords": [],

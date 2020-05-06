@@ -32,12 +32,12 @@
 					{
 						imgUrl: img2,
 						title: "图片分享",
-						router: "/home/newslist"
+						router: "/home/photolist"
 					},
 					{
 						imgUrl: img3,
 						title: "商品购买",
-						router: "/home/newslist"
+						router: "/home/goodslist"
 					},
 					{
 						imgUrl: img4,

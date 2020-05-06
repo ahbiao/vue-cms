@@ -37,7 +37,8 @@ export default {
   methods: {
     async getNewsList() {
       const { data } = await this.$http.get("/api/getnewslist");
-      if (data.status === 0) return (this.list = data.message);
+      if (data.status === 0) this.list = data.message;
+      if (data.message.length===this.list.length) this.finished = true;
     },
     onLoad() {
       if (this.refreshing) {
@@ -48,9 +49,6 @@ export default {
       this.getNewsList();
       // console.log(this.getNewsList())
       this.loading = false;
-      if (this.list.length >= 9) {
-        this.finished = true;
-      }
     },
     onRefresh() {
       // 清空列表数据
