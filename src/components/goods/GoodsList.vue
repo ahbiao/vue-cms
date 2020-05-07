@@ -1,40 +1,46 @@
 <template>
   <div>
-    <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-      <van-grid :border="false" :column-num="2">
-        <van-grid-item v-for="(item, index) in goodsList" :key="index" :to="'/home/goodsinfo/'+item.id">
-          <div class="crad">
-            <van-image
-              lazy-load
-              :src="item.img_url"
-              width="100%"
-              height="100%"
-              alt="加载失败"
-              error-icon="warning-o"
-              style="min-height:170px"
-            >
-              <template v-slot:loading>
-                <van-loading />
-                <van-loading type="spinner" />
-              </template>
-            </van-image>
-            <span style="padding: 5px;font-size:14px;">{{item.title}}</span>
-            <div style="padding: 5px;background-color:#ECEEEB;">
-              <span style="color:red;">￥{{item.sell_price}}</span>&nbsp;&nbsp;&nbsp;
-              <span
-                style="text-decoration:line-through;font-size:13px"
-              >￥{{item.market_price}}</span>
-              <div class="bottom">
-                <div class="bottom-b">
-                  <span>热买中</span>
-                  <span>剩余{{item.stock_quantity}}件</span>
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+      <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+        <van-grid :border="false" :column-num="2">
+          <van-grid-item
+            v-for="(item, index) in goodsList"
+            :key="index"
+            :to="'/home/goodsinfo/'+item.id"
+          >
+            <div class="crad">
+              <van-image
+                lazy-load
+                :src="item.img_url"
+                width="100%"
+                height="100%"
+                alt="加载失败"
+                error-icon="warning-o"
+                style="min-height:170px"
+              >
+                <template v-slot:loading>
+                  <van-loading />
+                  <van-loading type="spinner" />
+                </template>
+              </van-image>
+              <span style="padding: 5px;font-size:14px;">{{item.title}}</span>
+              <div style="padding: 5px;background-color:#ECEEEB;">
+                <span style="color:red;">￥{{item.sell_price}}</span>&nbsp;&nbsp;&nbsp;
+                <span
+                  style="text-decoration:line-through;font-size:13px"
+                >￥{{item.market_price}}</span>
+                <div class="bottom">
+                  <div class="bottom-b">
+                    <span>热买中</span>
+                    <span>剩余{{item.stock_quantity}}件</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </van-grid-item>
-      </van-grid>
-    </van-list>
+          </van-grid-item>
+        </van-grid>
+      </van-list>
+    </van-pull-refresh>
   </div>
 </template>
 
@@ -45,7 +51,8 @@ export default {
       page: 1,
       goodsList: [],
       loading: false,
-      finished: false
+      finished: false,
+      refreshing: false
     };
   },
   created() {
@@ -55,11 +62,21 @@ export default {
     onLoad() {
       if (this.refreshing) {
         this.goodsList = [];
+        this.page = 0;
         this.refreshing = false;
       }
       this.page++;
       this.getGoodsByPage();
       this.loading = false;
+    },
+    onRefresh() {
+      // 清空列表数据
+      this.finished = false;
+
+      // 重新加载数据
+      // 将 loading 设置为 true，表示处于加载状态
+      this.loading = true;
+      this.onLoad();
     },
     async getGoodsByPage() {
       const { data } = await this.$http.get(

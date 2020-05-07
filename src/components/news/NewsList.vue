@@ -34,6 +34,9 @@ export default {
       refreshing: false
     };
   },
+  created() {
+    this.getNewsList()
+  },
   methods: {
     async getNewsList() {
       const { data } = await this.$http.get("/api/getnewslist");
@@ -59,8 +62,7 @@ export default {
       this.loading = true;
       this.onLoad();
     }
-  },
-  filters: {}
+  }
 };
 </script>
 

@@ -57,7 +57,7 @@ export default {
         this.imgList = [];
         this.refreshing = false;
       }
-      // console.log(this.getNewsList())
+      this.getImgByCategory(this.active)
       this.loading = false;
     },
     onRefresh() {

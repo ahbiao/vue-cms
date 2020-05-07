@@ -1,10 +1,6 @@
 <template>
 	<div class="app-con">
-		<van-swipe class="my-swipe" :autoplay="3000" indicator-color="white" height="150">
-			<van-swipe-item v-for="(item, index) in lubotu" :key="index">
-				<img v-lazy="item.img" />
-			</van-swipe-item>
-		</van-swipe>
+		<swiper :images="lubotu" :imgname="'img'"></swiper>
 		<van-grid :column-num="3" :border="false">
 			<van-grid-item v-for="(item,i) in memu" :key="i" :to="item.router" default>
 				<van-image :src="item.imgUrl" />
@@ -21,6 +17,7 @@
 	import img4 from "../../images/menu4.png";
 	import img5 from "../../images/menu5.png";
 	import img6 from "../../images/menu6.png";
+	import swiper from '../sub-components/Swiper.vue'
 	export default {
 		data() {
 			return {
@@ -69,14 +66,17 @@
 				// console.log(data);
 				if (data.status === 0) this.lubotu = data.message;
 			}
+		},
+		components:{
+			swiper
 		}
 	};
 </script>
 
 <style scoped>
-	.my-swipe .van-swipe-item img {
+	.my-swipe,.van-swipe {
 		width: 100%;
-		height: 100%;
+		height: 200px;
 	}
 
 	.van-image {

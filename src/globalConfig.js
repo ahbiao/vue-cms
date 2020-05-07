@@ -22,7 +22,7 @@ import {
 	Tab,
 	Tabs,
 	Loading,
-	ImagePreview
+	ImagePreview,Stepper 
 } from 'vant'
 Vue.use(NavBar)
 Vue.use(Tabbar)
@@ -30,8 +30,7 @@ Vue.use(TabbarItem)
 Vue.use(Swipe)
 Vue.use(SwipeItem)
 Vue.use(Lazyload, {
-	lazyComponent: true,
-	loading
+	lazyComponent: true
 })
 Vue.use(Grid);
 Vue.use(GridItem);
@@ -49,8 +48,8 @@ Vue.use(Tab);
 Vue.use(Tabs);
 Vue.use(Loading);
 Vue.use(ImagePreview);
+Vue.use(Stepper);
 
-import loading from './images/loading.gif'
 
 
 // 导入axios
