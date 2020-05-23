@@ -8,9 +8,13 @@ import './globalConfig.js'
 import App from './components/App.vue'
 // 导入路由
 import router from './router.js'
+//导入Vuex
+import store from './store.js'
+
 // 创建vm实例
 const vm = new Vue({
 	el: '#app',
 	render: c => c(App),
-	router
+	router,//挂载路由
+	store //挂载store
 })

@@ -9,7 +9,7 @@
     <!-- tabbar -->
     <van-tabbar v-model="active" fixed placeholder>
       <van-tabbar-item icon="home-o" to="/home">首页</van-tabbar-item>
-      <van-tabbar-item icon="shopping-cart-o" to="/shopcar" badge="0">购物车</van-tabbar-item>
+      <van-tabbar-item icon="shopping-cart-o" to="/shopcar" :badge="totalcount">购物车</van-tabbar-item>
       <van-tabbar-item icon="contact" to="/member">会员</van-tabbar-item>
       <van-tabbar-item icon="search" to="/search">搜索</van-tabbar-item>
     </van-tabbar>
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   data() {
     return {
@@ -45,7 +46,10 @@ export default {
           break;
       }
     }
-  }
+  },
+  computed: {
+    ...mapGetters(['totalcount'])
+  },
 };
 </script>
 

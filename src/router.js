@@ -14,6 +14,7 @@ import PhotoInfo from './components/photos/PhotoInfo.vue'
 import GoodsList from './components/goods/GoodsList.vue'
 import GoodsInfo from './components/goods/GoodsInfo.vue'
 import GoodsDesc from './components/goods/GoodsDesc.vue'
+import GoodsComment from './components/goods/GoodsComment.vue'
 // 配置路由
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -62,6 +63,10 @@ const router = new VueRouter({
         },{
             path: '/home/goodsdesc/:id',
             component: GoodsDesc,
+            props:true
+        },{
+            path:'/home/goodscomment/:id',
+            component:GoodsComment,
             props:true
         }
     ]

@@ -1,6 +1,6 @@
 <template>
 	<div class="app-con">
-		<swiper :images="lubotu" :imgname="'img'"></swiper>
+		<swiper :images="lubotu" :imgname="'img'" style="height:200px;width:100%;"></swiper>
 		<van-grid :column-num="3" :border="false">
 			<van-grid-item v-for="(item,i) in memu" :key="i" :to="item.router" default>
 				<van-image :src="item.imgUrl" />
@@ -74,11 +74,6 @@
 </script>
 
 <style scoped>
-	.my-swipe,.van-swipe {
-		width: 100%;
-		height: 200px;
-	}
-
 	.van-image {
 		width: 60px;
 		height: 60px;

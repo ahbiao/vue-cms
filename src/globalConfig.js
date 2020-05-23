@@ -22,7 +22,13 @@ import {
 	Tab,
 	Tabs,
 	Loading,
-	ImagePreview,Stepper 
+	ImagePreview,
+	Stepper,
+	Card,
+	Tag,
+	Checkbox,
+	CheckboxGroup,
+	SubmitBar
 } from 'vant'
 Vue.use(NavBar)
 Vue.use(Tabbar)
@@ -49,13 +55,18 @@ Vue.use(Tabs);
 Vue.use(Loading);
 Vue.use(ImagePreview);
 Vue.use(Stepper);
+Vue.use(Card);
+Vue.use(Tag);
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
+Vue.use(SubmitBar);
 
 
 
 // 导入axios
 import axios from 'axios'
 Vue.prototype.$http = axios.create({
-	baseURL: 'http://www.liulongbin.top:3005/' //配置全局axios请求根路径
+	baseURL: 'http://api.cms.liulongbin.top/' //配置全局axios请求根路径
 })
 
 // 导入全局样式

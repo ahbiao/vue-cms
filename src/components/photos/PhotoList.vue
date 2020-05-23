@@ -81,7 +81,7 @@ export default {
       if (name != 0) ids = this.imgCategory[name].id;
       const { data } = await this.$http.get("/api/getimages/" + ids);
       if (data.status === 0) this.imgList = data.message;
-      if (data.message.length <= 0) this.finished = true;
+      if (data.message.length <= 0 || ids==0) this.finished = true;
     }
   }
 };
